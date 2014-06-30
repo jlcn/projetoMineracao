@@ -1,0 +1,49 @@
+# java specific #
+#################
+*.class
+target/
+
+#netbeans ignore personal stuff #
+#################################
+nbproject/private/
+
+# generic files to ignore #
+###########################
+*~
+*.lock
+*.DS_Store
+*.swp
+*.out
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.rar
+*.tar
+*.zip
+*.class
+
+# Logs and databases #
+######################
+*.log
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store?
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# MS Office generated temp files #
+##################################
+~$*.doc
+~*.tmp
+.~*.doc#
+~*.~*
+*.*~
