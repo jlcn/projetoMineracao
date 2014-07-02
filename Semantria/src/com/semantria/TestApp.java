@@ -5,6 +5,10 @@ import com.semantria.mapping.output.DocAnalyticData;
 import com.semantria.mapping.output.DocEntity;
 import com.semantria.mapping.output.DocTheme;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -15,6 +19,17 @@ public class TestApp
 
 	public static void main(String args[])
 	{
+		
+		File file = new File("output.txt");  
+		FileOutputStream fis;
+		try {
+			fis = new FileOutputStream(file);
+			PrintStream out = new PrintStream(fis);  
+			System.setOut(out);
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		}  
+		
 		// Use correct Semantria API credentias here
 		String key = "4ea25558-cf1a-48ec-92b0-53d273714b12";
 		String secret = "6f1eb449-3065-478a-a2f5-59ea5e0dceac";
@@ -27,9 +42,13 @@ public class TestApp
 		
 		// Initial texts for processing
 		List<String> initialTexts = new ArrayList<String>();
-		initialTexts.add("Lisa - there's 2 Skinny cow coupons available $5 skinny cow ice cream coupons on special k boxes and Printable FPC from facebook - a teeny tiny cup of ice cream. I printed off 2 (1 from my account and 1 from dh's). I couldn't find them instore and i'm not going to walmart before the 19th. Oh well sounds like i'm not missing much ...lol");
-		initialTexts.add("In Lake Louise - a ₤ guided walk for the family with Great Divide Nature Tours  rent a canoe on Lake Louise or Moraine Lake  go for a hike to the Lake Agnes Tea House. In between Lake Louise and Banff - visit Marble Canyon or Johnson Canyon or both for family friendly short walks. In Banff  a picnic at Johnson Lake  rent a boat at Lake Minnewanka  hike up Tunnel Mountain  walk to the Bow Falls and the Fairmont Banff Springs Hotel  visit the Banff Park Museum. The \"must-do\" in Banff is a visit to the Banff Gondola and some time spent on Banff Avenue - think candy shops and ice cream.");
-		initialTexts.add("On this day in 1786 - In New York City  commercial ice cream was manufactured for the first time.");
+		//initialTexts.add("Lisa - there's 2 Skinny cow coupons available $5 skinny cow ice cream coupons on special k boxes and Printable FPC from facebook - a teeny tiny cup of ice cream. I printed off 2 (1 from my account and 1 from dh's). I couldn't find them instore and i'm not going to walmart before the 19th. Oh well sounds like i'm not missing much ...lol");
+		//initialTexts.add("In Lake Louise - a ₤ guided walk for the family with Great Divide Nature Tours  rent a canoe on Lake Louise or Moraine Lake  go for a hike to the Lake Agnes Tea House. In between Lake Louise and Banff - visit Marble Canyon or Johnson Canyon or both for family friendly short walks. In Banff  a picnic at Johnson Lake  rent a boat at Lake Minnewanka  hike up Tunnel Mountain  walk to the Bow Falls and the Fairmont Banff Springs Hotel  visit the Banff Park Museum. The \"must-do\" in Banff is a visit to the Banff Gondola and some time spent on Banff Avenue - think candy shops and ice cream.");
+		//initialTexts.add("On this day in 1786 - In New York City  commercial ice cream was manufactured for the first time.");
+		
+		//Adding the documents gotten from the crawler
+		Crawler crawler = new Crawler("http://www.imdb.com/title/tt1937390/");
+		initialTexts = crawler.getCleanedReviews();
 		
 		System.out.println("Semantria service demo.");
 		
