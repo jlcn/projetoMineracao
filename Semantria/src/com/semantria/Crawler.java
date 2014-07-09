@@ -68,4 +68,28 @@ public class Crawler {
 		}
 		return list;
 	}
+	
+//	public static void main(String[] args) {
+//		
+//		File file = new File("output.txt");  
+//		FileOutputStream fis;
+//		try {
+//			fis = new FileOutputStream(file);
+//			PrintStream out = new PrintStream(fis);  
+//			System.setOut(out);
+//		} catch (FileNotFoundException e1) {
+//			e1.printStackTrace();
+//		}
+//		
+//		List<String> initialTexts = new ArrayList<String>();
+//		
+//		//Adding the documents gotten from the crawler
+//		Crawler crawler = new Crawler("http://www.imdb.com/title/tt1937390/");
+//		initialTexts = crawler.getCleanedReviews();
+//		
+//		for (int i = 0; i < initialTexts.size(); i++) {
+//			System.out.println(initialTexts.get(i));
+//		}
+//	}
+	
 }
