@@ -91,16 +91,24 @@ public class TestApp
 			int matches = 0;
 			String polarity;
 			int score;
+			double[] imdbPolarities = new double[3],
+				  semantriaPolarities = new double[3];
 			
 			for (int i = 0; i < polarities.length; i++) {
 				polarity = processed.get(i).getSentimentPolarity();
 				score = crawler.getClassificacaoUsuarios().get(i).intValue();
+				imdbPolarities[(polarity.equals("negative") ? 0 : (polarity.equals("neutral") ? 1 : 2))]++;
+				semantriaPolarities[(score <= 4) ? 0 : ((score >= 8) ? 2 : 1 )]++;
 				polarities[i] = (polarity.equals("negative") && score <= 4)
 						|| (polarity.equals("neutral") && score >= 5 && score <= 7)
 						|| (polarity.equals("positive") && score >= 8);
 				if(polarities[i]) matches++;
 			}
-			
+			System.out.format("	%17s%14s%19s", "% Negativo", "% Neutro", "% Positivo\n");
+			System.out.format("IMDb -  %16f%16f%16f", imdbPolarities[0]/polarities.length, imdbPolarities[1]/polarities.length, imdbPolarities[2]/polarities.length);
+			System.out.println();
+			System.out.format("Nosso - %16f%16f%16f", semantriaPolarities[0]/polarities.length, semantriaPolarities[1]/polarities.length, semantriaPolarities[2]/polarities.length);
+			System.out.println();
 			System.out.println(matches+" das "+polarities.length+" comparacoes entre polaridades foram semelhantes.\n-----Fim de execucao-----");
 		}
 		catch(Exception e)
