@@ -620,7 +620,7 @@ public final class Session
 		String method = "POST";
 		String url = serviceUrl + "/document." + requestFormat;
 		String body = serializer.serialize(task);
-        System.out.println("> " + body.getBytes().length);
+        // System.out.println("> " + body.getBytes().length);
 		AuthRequest ar = new AuthRequest(url, method, key, secret, body, config_id, appName, useCompression);
 		Integer status = ar.doRequest();
 		if(callback != null)

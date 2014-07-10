@@ -12,6 +12,7 @@ public class Crawler {
 
 	private Document doc;
 	private Elements reviews;
+	private ArrayList<Integer> classificacaoUsuarios;
 	private String html_base;
 	private String html_page;
 
@@ -20,17 +21,25 @@ public class Crawler {
 		//"http://www.imdb.com/title/tt1937390/"
 
 		this.reviews = new Elements();
+		this.classificacaoUsuarios = new ArrayList<Integer>();
 		this.html_base = initial_page;
 		this.html_page = html_base+"reviews?start=0";
 		this.crawl();
 	}
-	
+
 	public Elements getReviews() {
 		
 		return this.reviews;
 	}
+	
+	public ArrayList<Integer> getClassificacaoUsuarios() {
+		return classificacaoUsuarios;
+	}
 
 	private void crawl() {
+		
+		Elements temp;
+		Elements links_next;
 		
 		do{
 
@@ -39,19 +48,26 @@ public class Crawler {
 				// need http protocol
 				this.doc = Jsoup.connect(this.html_page).get();
 
-				// get all reviews
-				Elements temp = doc.select("div#tn15content > p");
-				this.reviews.addAll(temp.subList(0, Math.min(10, temp.size()-1)));
-				Elements links_next = doc.select("a[href] > img[alt=[Next]]");
-
-				//checks if there's more pages
-				if (!links_next.isEmpty()) {
-
-					this.html_page = this.html_base + links_next.get(0).parent().attr("href");
-				} else {
-				
-					this.html_page = null;
+				// get all reviews along with their scores, if any
+				temp = doc.select("div#tn15content > p, div#tn15content img[height=12]");
+				temp.remove(temp.size()-1);
+							
+				// Separates reviews from their scores, discarding any review without a score
+				for (int i = 0; i < temp.size(); i++) {
+					if(temp.get(i).tag().getName().equals("img"))
+					{
+						this.classificacaoUsuarios.add(new Integer(Integer.parseInt(temp.get(i).attr("alt").split("/")[0])));
+						this.reviews.add(temp.get(i+1));
+						i++;
+					}
 				}
+				
+				//checks if there's more pages
+				links_next = doc.select("a[href] > img[alt=[Next]]");
+				if (!links_next.isEmpty())
+					this.html_page = links_next.get(0).parent().attr("abs:href");
+				else
+					this.html_page = null;
 			} catch (IOException e) {
 			
 				e.printStackTrace();
@@ -67,5 +83,9 @@ public class Crawler {
 			list.add(review.text());
 		}
 		return list;
+	}
+	
+	public static void main(String[] args) {
+		Crawler c = new Crawler("http://www.imdb.com/title/tt2568204/");
 	}
 }

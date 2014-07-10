@@ -1,0 +1,39 @@
+Semantria service demo.
+> 2080
+"aa25c0a9-4058-44e9-b5b6-5065aca20a29" document queued succsessfully.
+> 1111
+"4e3ad2f0-1d4b-4cb1-b6e8-9378bd3ef56f" document queued succsessfully.
+> 925
+"80256bdc-3a64-4b15-bab0-427d8f59871a" document queued succsessfully.
+> 1866
+"82adc8c2-65eb-4a5f-89e5-38b0bbae104e" document queued succsessfully.
+> 1591
+"b45537ab-42c7-433b-af9b-9606bf2711c6" document queued succsessfully.
+> 1484
+"90364709-1c10-40a0-931d-371dcc36857d" document queued succsessfully.
+> 1451
+"ab0c6cb7-def9-4cb8-b2fe-c27830adbe09" document queued succsessfully.
+> 974
+"4ae30616-5d01-41df-953c-78331ac8b38e" document queued succsessfully.
+> 1491
+"bd78f4d8-7cb9-44d4-b5d9-f4d325f640db" document queued succsessfully.
+> 1694
+"92ddf38f-0c7e-42ce-84e2-4292323e664b" document queued succsessfully.
+> 778
+"31fb856d-da32-44b3-8637-0862abc1f3ed" document queued succsessfully.
+> 1336
+"57b0ad32-689d-44a8-9f42-205a92be483e" document queued succsessfully.
+> 705
+"db1842b2-fa17-4774-a735-d97f7189a16e" document queued succsessfully.
+> 1109
+"eafae6b8-9b47-4eea-9922-f296a60bb3a7" document queued succsessfully.
+> 1036
+"7358fb38-52a0-4a25-bbd9-e09e9b43eeb3" document queued succsessfully.
+> 1269
+"1f64cbce-2ee7-4651-b38f-fcac39e80380" document queued succsessfully.
+> 757
+"576f07eb-75d9-400e-b644-102a0cbe14a7" document queued succsessfully.
+> 829
+"1c0c09bc-6387-46a5-9f6f-cc7e2977228d" document queued succsessfully.
+
+8 das 18 comparacoes entre polaridades foram semelhantes.
