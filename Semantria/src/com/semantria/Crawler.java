@@ -84,8 +84,4 @@ public class Crawler {
 		}
 		return list;
 	}
-	
-	public static void main(String[] args) {
-		Crawler c = new Crawler("http://www.imdb.com/title/tt2568204/");
-	}
 }

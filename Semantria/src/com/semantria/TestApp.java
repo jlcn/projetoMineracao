@@ -1,4 +1,4 @@
-package com.semantria;
+﻿package com.semantria;
 
 import com.semantria.mapping.Document;
 import com.semantria.mapping.output.DocAnalyticData;

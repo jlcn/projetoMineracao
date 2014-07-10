@@ -1,0 +1,92 @@
+Semantria service demo.
+> 2444
+rawResponse = 
+requestUrl[POST] = https://api35.semantria.com/document.json?oauth_version=1.0&oauth_nonce=3931596951957366614&oauth_signature_method=HMAC-SHA1&oauth_consumer_key=4ea25558-cf1a-48ec-92b0-53d273714b12&oauth_timestamp=1404915979
+rawRequest = {"id":"b9a31e17-806d-4636-9005-981d9db91d09","text":"Don\u0027t. Your time is far too valuable. This film features unsimulated sex of pornographic actors digitally edited onto the parts of the real actors. So if you\u0027re looking for smut, you should instead watch a production from the \"Silicone Valley\" (or wherever it is the porn industry heads out of now). At least you won\u0027t have to labor through pretentious dialogue just to see some real action. It gets painful--the dialogue. There\u0027s a part in the movie where Skarsgard\u0027s character tries to rationalize the protagonist\u0027s nymphomania via the Fibonacci sequence. It really doesn\u0027t add anything meaningful to the plot, it\u0027s just von Trier trying to convince you that he went to college. No, I\u0027m only half kidding. Read the spoiler. *SPOILER* Assuming you don\u0027t heed my warning, and still decide to waste your time watching this film, then I won\u0027t won\u0027t give away too much, but Skarsgard\u0027s dialogue is supposed to build you up so you can be shocked by the, like, totally ironic ending of Vol. II...As if you couldn\u0027t see that coming, or as if you\u0027ll even care at that point. Just be glad it\u0027s over so you can go back to watching real porn ;) *END OF SPOILER* And if you\u0027re looking for a film that debases contemporaries and challenges social taboos, well...I guess you can say this film does that, or at least attempts to. It\u0027s all pretty shallow, though, and really comes off as an excuse to feature unsimulated sex in a movie full of renowned actors. I would not feel so strongly about this if the actors\u0027 performances weren\u0027t so laughable. I might have even forgiven von Trier if the characters were redeeming or at least believable. For start, LaBeouf\u0027s character speaks with an accent not of this world. And Slater\u0027s performance as the aged father is comparable to a parody straight out of SNL. Without giving away spoilers, I\u0027ll just say I couldn\u0027t find one character I could sympathize/empathize with, because they were either too dull, too deplorable, or too comical. Want to see a real art film? Un Chien Andalou, because this isn\u0027t art. And from a contemporary film\u0027s standpoint, there\u0027s really nothing to justify the extremes it has to reach in order to tell its story. Don\u0027t do it. Or do it, I don\u0027t care. I did my good deed for the day."}
+"b9a31e17-806d-4636-9005-981d9db91d09" document queued succsessfully.
+
+requestUrl[GET] = https://api35.semantria.com/document/processed.json?oauth_version=1.0&oauth_nonce=3931596951957366614&oauth_signature_method=HMAC-SHA1&oauth_consumer_key=4ea25558-cf1a-48ec-92b0-53d273714b12&oauth_timestamp=1404915985
+rawRequest = null
+rawResponse = [{"language":"English","id":"b9a31e17-806d-4636-9005-981d9db91d09","status":"PROCESSED","themes":[{"sentiment_score":0.13972972,"strength_score":3.3333333,"title":"unsimulated sex","sentiment_polarity":"neutral","evidence":7,"is_about":true},{"sentiment_score":0.029686792,"strength_score":3.148148,"title":"real art film","sentiment_polarity":"neutral","evidence":7,"is_about":false},{"sentiment_score":-0.5678331,"strength_score":2.154762,"title":"ironic ending","sentiment_polarity":"negative","evidence":7,"is_about":false},{"sentiment_score":-0.9797499,"strength_score":2.154762,"title":"totally ironic","sentiment_polarity":"negative","evidence":7,"is_about":false},{"sentiment_score":1.7526218,"strength_score":1.9727565,"title":"Fibonacci sequence","sentiment_polarity":"positive","evidence":7,"is_about":false}],"entities":[{"type":"named","sentiment_score":0.59158397,"sentiment_polarity":"positive","evidence":3,"title":"von Trier","is_about":false,"confident":true,"entity_type":"Person","label":"Person"},{"type":"named","themes":[{"sentiment_score":-0.52136874,"strength_score":1.5,"title":"giving away spoilers","sentiment_polarity":"negative","evidence":4,"is_about":false}],"sentiment_score":0.0,"sentiment_polarity":"neutral","evidence":1,"title":"Slater","is_about":false,"confident":true,"entity_type":"Place","label":"Place"},{"type":"named","themes":[{"sentiment_score":0.0,"strength_score":2.8333335,"title":"real art film","sentiment_polarity":"neutral","evidence":4,"is_about":false},{"sentiment_score":0.0,"strength_score":1.0,"title":"n't art","sentiment_polarity":"neutral","evidence":4,"is_about":false},{"sentiment_score":0.0,"strength_score":1.0,"title":"contemporary film","sentiment_polarity":"neutral","evidence":4,"is_about":false},{"sentiment_score":0.0,"strength_score":1.0,"title":"really nothing","sentiment_polarity":"neutral","evidence":4,"is_about":false}],"sentiment_score":0.0,"sentiment_polarity":"neutral","evidence":1,"title":"Un Chien Andalou","is_about":false,"confident":true,"entity_type":"Person","label":"Person"},{"type":"named","themes":[{"sentiment_score":-0.07817804,"strength_score":1.0,"title":"unsimulated sex","sentiment_polarity":"neutral","evidence":4,"is_about":false},{"sentiment_score":-0.03908902,"strength_score":1.0,"title":"pornographic actors","sentiment_polarity":"neutral","evidence":4,"is_about":false},{"sentiment_score":-0.01954451,"strength_score":1.0,"title":"real actors","sentiment_polarity":"neutral","evidence":4,"is_about":false},{"sentiment_score":-0.26760557,"strength_score":1.0,"title":"porn industry","sentiment_polarity":"neutral","evidence":4,"is_about":false},{"sentiment_score":-0.6,"strength_score":1.0,"title":"pretentious dialogue","sentiment_polarity":"negative","evidence":4,"is_about":false}],"sentiment_score":0.0,"sentiment_polarity":"neutral","evidence":1,"title":"\"Silicone Valley\"","is_about":false,"confident":true,"entity_type":"Quote","label":"Quote"}],"phrases":[{"type":"detected","sentiment_score":0.915,"title":"be glad","sentiment_polarity":"positive","is_negated":false,"is_intensified":true,"intensifying_phrase":"Just"},{"type":"detected","sentiment_score":-1.08,"title":"deplorable","sentiment_polarity":"negative","is_negated":false,"is_intensified":true,"intensifying_phrase":"too"},{"type":"detected","sentiment_score":0.8640001,"title":"valuable","sentiment_polarity":"positive","is_negated":false,"is_intensified":true,"intensifying_phrase":"too"},{"type":"detected","sentiment_score":-0.9,"title":"shocked","sentiment_polarity":"negative","is_negated":false,"is_intensified":false},{"type":"detected","sentiment_score":0.7099008,"title":"believable","sentiment_polarity":"positive","is_negated":false,"is_intensified":true,"intensifying_phrase":"least"},{"type":"possible","title":"digitally edited","sentiment_polarity":"neutral"},{"type":"possible","title":"real actors","sentiment_polarity":"neutral"},{"type":"possible","title":"instead watch","sentiment_polarity":"neutral"},{"type":"possible","title":"porn industry","sentiment_polarity":"neutral"},{"type":"possible","title":"n't have","sentiment_polarity":"neutral"}],"summary":"Your time is far too valuable... This film features unsimulated sex of pornographic actors digitally edited onto the parts of the real actors... At least you won't have to labor through pretentious dialogue just to see some real action... ","sentiment_score":-0.032321267,"sentiment_polarity":"neutral","topics":[{"type":"concept","hitcount":0,"sentiment_score":0.7099008,"strength_score":0.5976437,"title":"Art","sentiment_polarity":"positive"},{"type":"query","hitcount":1,"sentiment_score":0.5646287,"strength_score":0.0,"title":"Education","sentiment_polarity":"positive"}],"config_id":"ad271acc-0b5d-4419-85f5-5ccc1ec6b167","source_text":"Don't. Your time is far too valuable. This film features unsimulated sex of pornographic actors digitally edited onto the parts of the real actors. So if you're looking for smut, you should instead watch a production from the \"Silicone Valley\" (or wherever it is the porn industry heads out of now). At least you won't have to labor through pretentious dialogue just to see some real action. It gets painful--the dialogue. There's a part in the movie where Skarsgard's character tries to rationalize the protagonist's nymphomania via the Fibonacci sequence. It really doesn't add anything meaningful to the plot, it's just von Trier trying to convince you that he went to college. No, I'm only half kidding. Read the spoiler. *SPOILER* Assuming you don't heed my warning, and still decide to waste your time watching this film, then I won't won't give away too much, but Skarsgard's dialogue is supposed to build you up so you can be shocked by the, like, totally ironic ending of Vol. II...As if you couldn't see that coming, or as if you'll even care at that point. Just be glad it's over so you can go back to watching real porn ;) *END OF SPOILER* And if you're looking for a film that debases contemporaries and challenges social taboos, well...I guess you can say this film does that, or at least attempts to. It's all pretty shallow, though, and really comes off as an excuse to feature unsimulated sex in a movie full of renowned actors. I would not feel so strongly about this if the actors' performances weren't so laughable. I might have even forgiven von Trier if the characters were redeeming or at least believable. For start, LaBeouf's character speaks with an accent not of this world. And Slater's performance as the aged father is comparable to a parody straight out of SNL. Without giving away spoilers, I'll just say I couldn't find one character I could sympathize/empathize with, because they were either too dull, too deplorable, or too comical. Want to see a real art film? Un Chien Andalou, because this isn't art. And from a contemporary film's standpoint, there's really nothing to justify the extremes it has to reach in order to tell its story. Don't do it. Or do it, I don't care. I did my good deed for the day.","language_score":321.0}]
+Document:
+	id: b9a31e17-806d-4636-9005-981d9db91d09
+	sentiment score: -0.032321267
+	sentiment polarity: neutral
+
+	document themes:
+		title: unsimulated sex 
+		sentiment: 0.13972972
+		sentiment polarity: neutral
+
+		title: real art film 
+		sentiment: 0.029686792
+		sentiment polarity: neutral
+
+		title: ironic ending 
+		sentiment: -0.5678331
+		sentiment polarity: negative
+
+		title: totally ironic 
+		sentiment: -0.9797499
+		sentiment polarity: negative
+
+		title: Fibonacci sequence 
+		sentiment: 1.7526218
+		sentiment polarity: positive
+
+	entities:
+		title: von Trier
+		sentiment: 0.59158397
+		sentiment polarity: positive
+		title: Slater
+		sentiment: 0.0
+		sentiment polarity: neutral
+		entity themes:
+			title: giving away spoilers 
+			sentiment: -0.52136874
+			sentiment polarity: negative
+
+		title: Un Chien Andalou
+		sentiment: 0.0
+		sentiment polarity: neutral
+		entity themes:
+			title: real art film 
+			sentiment: 0.0
+			sentiment polarity: neutral
+
+			title: n't art 
+			sentiment: 0.0
+			sentiment polarity: neutral
+
+			title: contemporary film 
+			sentiment: 0.0
+			sentiment polarity: neutral
+
+			title: really nothing 
+			sentiment: 0.0
+			sentiment polarity: neutral
+
+		title: "Silicone Valley"
+		sentiment: 0.0
+		sentiment polarity: neutral
+		entity themes:
+			title: unsimulated sex 
+			sentiment: -0.07817804
+			sentiment polarity: neutral
+
+			title: pornographic actors 
+			sentiment: -0.03908902
+			sentiment polarity: neutral
+
+			title: real actors 
+			sentiment: -0.01954451
+			sentiment polarity: neutral
+
+			title: porn industry 
+			sentiment: -0.26760557
+			sentiment polarity: neutral
+
+			title: pretentious dialogue 
+			sentiment: -0.6
+			sentiment polarity: negative
+
