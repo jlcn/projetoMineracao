@@ -1,4 +1,4 @@
-﻿package com.semantria;
+package analisadorJMRT;
 
 import com.semantria.mapping.Document;
 import com.semantria.mapping.output.DocAnalyticData;
@@ -12,50 +12,48 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.UUID;
 
-public class TestApp
+public class AnalisadorSemantria
 {
 	private static final int TIMEOUT_BEFORE_GETTING_RESPONSE = 5000; //in millisec
-
-	public static void main(String args[])
+	private String movieUrl;
+	private String[] categories;
+	private String[] series;
+	private int matches;
+	private int[][] values;
+	final private String key = "4ea25558-cf1a-48ec-92b0-53d273714b12";
+	final private String secret = "6f1eb449-3065-478a-a2f5-59ea5e0dceac";
+	private boolean[] polarities;
+	private double[] imdbPolarities, semantriaPolarities;
+	private Session session;
+	
+	public AnalisadorSemantria()
 	{
-
-		// Uncomment to set the output stream to a file instead of the console
-//		File file = new File("output.txt");  
-//		FileOutputStream fis;
-//		try {
-//			fis = new FileOutputStream(file);
-//			PrintStream out = new PrintStream(fis);  
-//			System.setOut(out);
-//		} catch (FileNotFoundException e1) {
-//			e1.printStackTrace();
-//		}
+		this.session = Session.createSession(key, secret, true);
 		
-		Scanner in = new Scanner(System.in);
+		this.categories = new String[4];
+		this.series = new String[3];
+		this.values = new int[4][3];
+	}
 
-		// Use correct Semantria API credentias here
-		String key = "4ea25558-cf1a-48ec-92b0-53d273714b12";
-		String secret = "6f1eb449-3065-478a-a2f5-59ea5e0dceac";
+	public double[] getImdbPolarities() {
+		return imdbPolarities;
+	}
 
-		if( args != null && args.length == 2 )
-		{
-			key = args[0];
-			secret = args[1];
-		}
+	public double[] getSemantriaPolarities() {
+		return semantriaPolarities;
+	}
 
-		// Initial texts for processing
+	public void doThings(String movieUrl, Crawler crawler)
+	{
+		this.movieUrl = movieUrl;
 		List<String> initialTexts = new ArrayList<String>();
-		
-		System.out.print("Digite aqui a url da IMDb desejada para a analise (ex: http://www.imdb.com/title/tt2568204/):\n>");
-		String url = in.nextLine();
-		if(url.equals("")) url = "http://www.imdb.com/title/tt2568204/";
-		
+
 		// Adding the documents gotten from the crawler
-		Crawler crawler = new Crawler(url);
+		//crawler = new Crawler(movieUrl);
 		initialTexts = crawler.getCleanedReviews();
 
 		System.out.println("Processando...");
 
-		Session session = Session.createSession(key, secret, true);
 		// session.setCallbackHandler(new CallbackHandler());
 		for(String text : initialTexts)
 		{
@@ -64,7 +62,11 @@ public class TestApp
 			// Queues document for processing on Semantria service
 			if( session.queueDocument( new Document( uid, text )) == 202)
 			{
-				 System.out.println("\"" + uid + "\" document queued succsessfully.");
+				System.out.println("\"" + uid + "\" document queued succsessfully.");
+			}
+			else
+			{
+				System.out.println("\"" + uid + "\" document queued unsuccsessfully(ERROR).");
 			}
 		}
 		// System.out.println();
@@ -82,38 +84,35 @@ public class TestApp
 				List<DocAnalyticData> temp = session.getProcessedDocuments();
 				processed.addAll(temp);
 				if(processed.size() >= initialTexts.size()) break;
-				 System.out.println("Retrieving your processed results...");
+				System.out.println("Retrieving your processed results("+processed.size()+" from "+ initialTexts.size() +")...");
 				Thread.currentThread().sleep(TIMEOUT_BEFORE_GETTING_RESPONSE);
 			}
-			
+
 			// Output helpers
-			boolean[] polarities = new boolean[processed.size()];
-			int matches = 0;
+			polarities = new boolean[processed.size()];
+			matches = 0;
 			String polarity;
 			int score;
-			double[] imdbPolarities = new double[3],
-				  semantriaPolarities = new double[3];
-			
+			imdbPolarities = new double[3];
+			semantriaPolarities = new double[3];
+
 			for (int i = 0; i < polarities.length; i++) {
+				//System.out.println(i);
 				polarity = processed.get(i).getSentimentPolarity();
 				score = crawler.getClassificacaoUsuarios().get(i).intValue();
-				imdbPolarities[(polarity.equals("negative") ? 0 : (polarity.equals("neutral") ? 1 : 2))]++;
-				semantriaPolarities[(score <= 4) ? 0 : ((score >= 8) ? 2 : 1 )]++;
+				semantriaPolarities[(polarity.equals("negative") ? 0 : (polarity.equals("neutral") ? 1 : 2))]++;
+				imdbPolarities[(score <= 4) ? 0 : ((score >= 8) ? 2 : 1 )]++;
 				polarities[i] = (polarity.equals("negative") && score <= 4)
 						|| (polarity.equals("neutral") && score >= 5 && score <= 7)
 						|| (polarity.equals("positive") && score >= 8);
 				if(polarities[i]) matches++;
 			}
-			System.out.format("	%17s%14s%19s", "% Negativo", "% Neutro", "% Positivo\n");
-			System.out.format("IMDb -  %16f%16f%16f", imdbPolarities[0]/polarities.length, imdbPolarities[1]/polarities.length, imdbPolarities[2]/polarities.length);
-			System.out.println();
-			System.out.format("Nosso - %16f%16f%16f", semantriaPolarities[0]/polarities.length, semantriaPolarities[1]/polarities.length, semantriaPolarities[2]/polarities.length);
-			System.out.println();
-			System.out.println(matches+" das "+polarities.length+" comparacoes entre polaridades foram semelhantes.\n-----Fim de execucao-----");
 		}
 		catch(Exception e)
 		{
 			System.err.println(e.getMessage());
+			e.printStackTrace();
 		}
 	}
+
 }

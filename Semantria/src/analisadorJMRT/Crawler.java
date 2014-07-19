@@ -1,4 +1,4 @@
-package com.semantria;
+package analisadorJMRT;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -83,10 +83,5 @@ public class Crawler {
 			list.add(review.text());
 		}
 		return list;
-	}
-	
-	public static void main(String[] args) {
-		Crawler c = new Crawler("http://www.imdb.com/title/tt2103281");
-		c.toString();
 	}
 }

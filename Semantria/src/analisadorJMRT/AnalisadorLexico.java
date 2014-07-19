@@ -62,19 +62,22 @@ public class AnalisadorLexico {
 		return list;
 	}
 
-	public static int countWords(ArrayList<String> dictionary, String[] texto) {
+	public static int[] countWords(ArrayList<String> inversor,ArrayList<String> dictionary, String[] texto) {
 
-		int count = 0;
+		int count1 = 0;
+		int count2 = 0;
 
 		for (int j = 0; j < texto.length; j++) {
 
-			if (dictionary.contains(texto[j])) {
-				count++;
+			if(j!=0 && inversor.contains(texto[j-1]) && dictionary.contains(texto[j])){
+				count2++;
+			}else if(dictionary.contains(texto[j])){
+				count1++;
 			}
-
 		}
 
-		return count;
+		int [] request= {count1, count2};
+		return request;
 	}
 
 }
